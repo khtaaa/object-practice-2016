@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace object_practice_2016
 {
-    class CHito : CIkimono
+    class CTori : CIkimono
     {
         private static int count = 0;
 
-        public CHito(string nm) :base(nm)
+        public CTori(string nm) :base(nm)
         {
             count++;
         }
@@ -22,7 +22,7 @@ namespace object_practice_2016
 
         public override string action()
         {
-            return "テクテク";
+            return "パタパタ";
         }
     }
 }

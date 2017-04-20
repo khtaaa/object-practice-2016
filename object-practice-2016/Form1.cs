@@ -19,7 +19,7 @@ namespace object_practice_2016
         /** 魚の名前*/
         private string[] SAKANA_NAMES = { "グッピー", "メダカ"};
 
-        private CHito[] hitoObjects;
+        private CIkimono[] ikimonos;
 
 
         public Form1()
@@ -29,30 +29,44 @@ namespace object_practice_2016
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            hitoObjects = new CHito[HITO_NAMES.Length];
-            for(int i=0; i<HITO_NAMES.Length; i++)
+            ikimonos = new CIkimono[HITO_NAMES.Length+TORI_NAMES.Length+SAKANA_NAMES.Length];
+            int index = 0;
+            for(int i=0; i<HITO_NAMES.Length;i++, index++)
             {
-                hitoObjects[i] = new CHito(HITO_NAMES[i]);
-                textBox1.AppendText("" + i + ":" + HITO_NAMES[i] + "\r\n");
+                ikimonos[index] = new CHito(HITO_NAMES[i]);
+                textBox1.AppendText("" + index + ":" + HITO_NAMES[i] + "\r\n");
+            }
+            for (int i = 0; i < TORI_NAMES.Length;i++, index++)
+            {
+                ikimonos[index] = new CTori(TORI_NAMES[i]);
+                textBox1.AppendText("" + index + ":" + TORI_NAMES[i] + "\r\n");
+            }
+            for (int i = 0; i < SAKANA_NAMES.Length;i++, index++)
+            {
+                ikimonos[index] = new CSakana(SAKANA_NAMES[i]);
+                textBox1.AppendText("" + index + ":" + SAKANA_NAMES[i] + "\r\n");
             }
         }
 
         private void buttonHello_Click(object sender, EventArgs e)
         {
             int index = int.Parse(txtIndex.Text);
-            textBox1.AppendText(hitoObjects[index].hello() + "\r\n");
+            textBox1.AppendText(ikimonos[index].hello() + "\r\n");
         }
 
         private void buttonAction_Click(object sender, EventArgs e)
         {
             int index = int.Parse(txtIndex.Text);
-            textBox1.AppendText(hitoObjects[index].action() + "\r\n");
+            textBox1.AppendText(ikimonos[index].action() + "\r\n");
         }
 
         private void buttonNumber_Click(object sender, EventArgs e)
         {
             int index = int.Parse(txtIndex.Text);
             textBox1.AppendText("人は" +CHito.getCount()+ "人\r\n");
+            textBox1.AppendText("鳥は" + CTori.getCount() + "鳥\r\n");
+            textBox1.AppendText("魚は" + CSakana.getCount() + "魚\r\n");
+            textBox1.AppendText("生き物は" + CIkimono.getIkimonoCount() + "体\r\n");
         }
     }
 }
